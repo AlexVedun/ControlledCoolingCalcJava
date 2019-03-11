@@ -14,40 +14,25 @@ import javafx.beans.property.SimpleIntegerProperty;
  *
  * @author Алексей
  */
-public class CCCalc {
-    private Double tempBeginCooling;         // ТНО - температура начала охлаждения
-    private Double tempEndCooling;           // ТКО - температура конца охлаждения
-    private Double tempWater;           // температура воды
-    private Double thickness;           // толщина листа
-    private Double totalWaterFlow;         // ОРВ - общий расход воды
-    private Double waterFlowUp;         // РВВ - расход воды "верх"
-    private Double waterFlowDown;       // РВН - расход воды "низ"
-    private Integer sectionCount;       // количество секций
-    private Double coolingRate;         // интенсивность охлаждения
-    private Double delta;               // разность ТНО и ТКО
-    private Double rollerSpeed;         // скорость рольганга
+public abstract class CCCalc {
+    protected Double tempBeginCooling;         // ТНО - температура начала охлаждения
+    protected Double tempEndCooling;           // ТКО - температура конца охлаждения
+    protected Double tempWater;           // температура воды
+    protected Double thickness;           // толщина листа
+    protected Double totalWaterFlow;         // ОРВ - общий расход воды
+    protected Double waterFlowUp;         // РВВ - расход воды "верх"
+    protected Double waterFlowDown;       // РВН - расход воды "низ"
+    protected Integer sectionCount;       // количество секций
+    protected Double coolingRate;         // интенсивность охлаждения
+    protected Double delta;               // разность ТНО и ТКО
+    protected Double rollerSpeed;         // скорость рольганга
+    protected Double ratio;               // коэффициент соотношения
 
     public CCCalc() {
-        /*tempBeginCooling = new SimpleDoubleProperty();
-        tempEndCooling = new SimpleDoubleProperty();
-        tempWater    = new SimpleDoubleProperty();
-        thickness = new SimpleDoubleProperty();
-        totalWaterFlow = new SimpleDoubleProperty();
-        waterFlowUp = new SimpleDoubleProperty();
-        waterFlowDown = new SimpleDoubleProperty();
-        sectionCount = new SimpleIntegerProperty();
-        coolingRate = new SimpleDoubleProperty();
-        delta = new SimpleDoubleProperty();
-        rollerSpeed = new SimpleDoubleProperty();*/
+        
     }
     
-    public void Calculate() {
-        delta = tempBeginCooling - tempEndCooling;
-        totalWaterFlow = -9.0104 * sectionCount + 5.28597 * delta + 22.6833 * coolingRate;
-        waterFlowDown = totalWaterFlow / 3.337;
-        waterFlowUp = waterFlowDown * 2.337;
-        rollerSpeed = 0.09968 * sectionCount + (-0.01422) * thickness + (-0.00295) * delta + 0.00038 * waterFlowUp + 3.78E-5 * waterFlowDown + 0.00593 * tempWater + 0.05506 * coolingRate;
-    }
+    public abstract void Calculate();      
 
     public Double getTempBeginCooling() {
         return tempBeginCooling;
@@ -107,7 +92,14 @@ public class CCCalc {
 
     public Double getRollerSpeed() {
         return rollerSpeed;
+    }  
+
+    public Double getRatio() {
+        return ratio;
     }
-    
+
+    public void setRatio(Double ratio) {
+        this.ratio = ratio;
+    }
     
 }
