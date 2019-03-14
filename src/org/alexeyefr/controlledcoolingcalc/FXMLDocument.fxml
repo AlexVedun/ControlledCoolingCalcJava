@@ -154,8 +154,8 @@
                             <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                           </rowConstraints>
                            <children>
-                              <TextField fx:id="waterFlowUpTextField" editable="false" focusTraversable="false" GridPane.columnIndex="1" />
-                              <TextField fx:id="waterFlowDownTextField" editable="false" focusTraversable="false" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                              <TextField fx:id="waterFlowDownTextField" editable="false" focusTraversable="false" GridPane.columnIndex="1" />
+                              <TextField fx:id="waterFlowUpTextField" editable="false" focusTraversable="false" GridPane.columnIndex="1" GridPane.rowIndex="1" />
                               <TextField fx:id="rollerSpeedTextField" editable="false" focusTraversable="false" GridPane.columnIndex="1" GridPane.rowIndex="2" />
                               <Label text="Расход воды &quot;низ&quot;">
                                  <GridPane.margin>
